@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/home_cubit/home_cubit.dart';
 import '../../../domain/model/room_model.dart';
 import '../../../infrastructure/service/app_helper.dart';
+import '../../routes.dart';
 import '../../styles/styles.dart';
-import '../../utils/my_drop_down.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -231,9 +231,16 @@ class _HomePageState extends State<HomePage>
         Expanded(
             child: TabBarView(
           controller: tabController,
-          children: const [
-            Text("data"),
-            Text("data"),
+          children: [
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    Routes.goNoInternet(type: "1"),
+                  );
+                },
+                child: const Text("data")),
+            const Text("data"),
           ],
         )),
       ]),

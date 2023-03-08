@@ -2,7 +2,9 @@ import 'package:ddd_lesson/application/main_cubit/main_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../ads_page.dart';
 import '../home/home_page.dart';
+import '../placePage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   List listOfPage = [
     const HomePage(),
     const Placeholder(),
-    const Placeholder(),
+    const PlacePage(),
     const Placeholder(),
     const Placeholder(),
   ];
@@ -27,6 +29,12 @@ class _MainPageState extends State<MainPage> {
         return SafeArea(
           child: Scaffold(
             body: listOfPage[state.selected],
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => AdmobPage()));
+              },
+            ),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: state.selected,
               onTap: (s) {
